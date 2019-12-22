@@ -1,0 +1,10 @@
+.card {
+  border: 2px solid purple;
+  width: 28.9%;
+  text-align: center;
+  padding: .2% 1%;
+  font-size: 1.1em;
+  height: 375px;
+  overflow: scroll;
+  margin: 1% auto;
+}

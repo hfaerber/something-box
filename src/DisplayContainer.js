@@ -1,17 +1,18 @@
 import React from 'react';
 import Card from './Card';
+import './DisplayContainer.css'
 
 const DisplayContainer = ({ quotes, currentEpisode }) => {
-  console.log(quotes[0]);
-  const quoteCards = (quotes[0]).map((quote, index) => {
+  console.log('quotes being passed', quotes);
+  const quoteCards = quotes.map((quote, index) => {
     return <Card
       key={index+10}
-      text={quote}
+      lines={quote}
     />
   })
 
   return(
-    <div>
+    <div className="DisplayContainer">
       {quoteCards}
     </div>
   )

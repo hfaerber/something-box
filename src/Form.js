@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import './Line.css';
+import './Form.css';
 
 class Form extends Component {
   constructor() {
@@ -15,7 +17,7 @@ class Form extends Component {
 
   render() {
     return(
-      <form>
+      <form className='form'>
         <input type='text' value={this.state.character} name='character'
           placeholder='Who said it?'
           onChange={event => this.handleChange(event)} />

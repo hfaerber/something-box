@@ -1,0 +1,16 @@
+.hide {
+  /* display: none; */
+  width: 30%;
+
+}
+
+.show {
+  width: 30%;
+}
+
+.searchHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,11 @@
+.form {
+  width: 100%;
+}
+
+input,
+button {
+  margin: 1%;
+  font-size: 1.1em;
+  border-radius: 5px;
+  padding: .5%;  
+}
