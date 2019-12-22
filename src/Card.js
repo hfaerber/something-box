@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Card = () => {
+const Card = ({ text }) => {
   return(
-
+    <div> {text} </div>
   )
 }
 
