@@ -356,6 +356,8 @@ class App extends Component {
             Rachel's Office Quote Generator.
           </h1>
         </header>
+        <img src='https://user-images.githubusercontent.com/48163945/71424654-92988480-268b-11ea-9a9a-59efd689316c.png' className='logo'/>
+
         <Search
           isSearchDisplay={this.state.searchMatches.length}
           handleSearch={this.handleSearch}

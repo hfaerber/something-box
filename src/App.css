@@ -26,3 +26,8 @@
     transform: rotate(360deg);
   }
 }
+
+.logo {
+  width: 80%;
+  margin: 10px, auto;
+}
