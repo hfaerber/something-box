@@ -321,16 +321,24 @@ class App extends Component {
       //   ],
       quotes: [],
       searchMatches: [],
-      isLoading: true
+      isLoading: true,
+      loader: <img src='https://media.giphy.com/media/SwffhF8CK0RTW/giphy.gif' alt='loading....'/>,
+      isError: ''
     }
   }
 
   componentDidMount() {
     fetch(`https://the-office-api.herokuapp.com/season/${this.state.currentSeason}/format/quotes`)
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) {
+          throw Error(this.state.isError)
+        }
+        return res.json()
+      })
       .then(data => {
         this.setInitialState(data.data);
       })
+      .catch(err => this.setState( {isError: err} ))
   }
 
   setInitialState = (dataArray) => {
@@ -344,12 +352,13 @@ class App extends Component {
   }
 
   setStateBySeason = (season) => {
-    this.setState({ currentSeason: season });
+    this.setState({ currentSeason: season, isLoading: true });
     fetch(`https://the-office-api.herokuapp.com/season/${this.state.currentSeason}/format/quotes`)
       .then(res => res.json())
       .then(data => {
         this.setInitialState(data.data);
       })
+      .catch(err => this.setState({ isError: err }))
   }
 
   handleSearch = (query) => {
@@ -366,7 +375,6 @@ class App extends Component {
     } else {
       this.setState({ searchMatches: [] });
     }
-
   }
 
   render() {
@@ -385,6 +393,8 @@ class App extends Component {
           <img src='https://user-images.githubusercontent.com/48163945/71428089-6ba37800-26b6-11ea-9c43-f176d705a0a6.jpeg' name="Jim:" className='headshot'/>
           <img src='https://user-images.githubusercontent.com/48163945/71428099-7f4ede80-26b6-11ea-8f72-7f7bb8c00c32.png' name="Pam:" className='headshot'/>
         </section>
+
+        { this.state.isLoading && this.state.loader }
 
         { !this.state.isLoading &&
         <Search
