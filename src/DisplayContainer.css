@@ -2,4 +2,6 @@
   border: 1px solid blue;
   display: flex;
   flex-wrap: wrap;
+  height: 600px;
+  overflow: scroll;
 }

@@ -28,6 +28,11 @@
 }
 
 .logo {
-  width: 80%;
-  margin: 10px, auto;
+  width: 56%;
+  margin: 1%, auto;
+}
+
+.headshot {
+  width: 17%;
+  margin: 1%;
 }

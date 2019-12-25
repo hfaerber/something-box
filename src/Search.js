@@ -18,12 +18,21 @@ class Search extends Component {
 
   handleSeason = event => {
     this.setState( { season: event.target.value } );
-    
+  }
+
+  handleGoButton = () => {
+    console.log('go button', this.state.season);
+    this.props.setStateBySeason(this.state.season);
   }
 
   handleClick = () => {
     console.log('clicked', 'clicked search btn');
     this.props.handleSearch(this.state.query)
+  }
+
+  handleAllResults = () => {
+    this.clearQuery();
+    this.props.handleSearch('')
   }
 
   clearQuery = () => {
@@ -34,10 +43,9 @@ class Search extends Component {
     const buttonStatus = this.props.isSearchDisplay ? 'show' : 'hide';
     return(
       <div>
-        <label htmlFor="season-select">Choose a season:</label>
-
+        <label htmlFor="season-select" className="label-dropdown" >Choose a season:</label>
         <select name="season" value={this.state.season} id="season-select"
-          onChange={event => this.handleSeason(event)}>
+          onChange={event => this.handleSeason(event)} className="dropdown">
             <option value="">--Please choose a season--</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -49,16 +57,15 @@ class Search extends Component {
             <option value="8">8</option>
             <option value="9">9</option>
         </select>
-
+        <button className='season-button' onClick={this.handleGoButton}>Go!</button>
         <div className='searchHeader'>
           <h1>{this.props.isSearchDisplay ? `That's What *${this.state.query}* Said` : 'That\'s What She Said'}</h1>
-          <button className={buttonStatus}>Back To All Results</button>
+          <button className={buttonStatus} onClick={this.handleAllResults}>Back To All Results</button>
         </div>
-
         <div className='searchInputs'>
-          <input type="text" name='query' placeholder='Search Quote by Character'
+          <input className='search-input' type="text" name='query' placeholder='Search Quote by Character'
             value={this.state.query} onChange={event => this.handleChange(event)} />
-          <button type='button' onClick={this.handleClick}>Search</button>
+          <button className='search-button' type='button' onClick={this.handleClick}>Search</button>
         </div>
       </div>
     )
@@ -67,25 +74,3 @@ class Search extends Component {
 }
 
 export default Search;
-
-
-// use drop down menu or images instead of type-in search
-//
-// <div>
-//   <img src='' name="Michael:" className='image'/>
-//   <img src='' name="Dwight:" className='image'/>
-//   <img src='' name="Jim:" className='image'/>
-//   <img src='' name="Pam:" className='image'/>
-//   <img src='' name="Phyllis:" className='image'/>
-//   <img src='' name="Creed:" className='image'/>
-//   <img src='' name="Angela:" className='image'/>
-//   <img src='' name="Kevin:" className='image'/>
-//   <img src='' name="Meredith:" className='image'/>
-//   <img src='' name="Tobuy:" className='image'/>
-//   <img src='' name="Oscar:" className='image'/>
-//   <img src='' name="Oscar:" className='image'/>
-//   <img src='' name="Oscar:" className='image'/>
-//
-//
-//
-// </div>
