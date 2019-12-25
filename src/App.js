@@ -352,11 +352,20 @@ class App extends Component {
   }
 
   setStateBySeason = (season) => {
+    // console.log('season arg: ', season)
     this.setState({ currentSeason: season, isLoading: true });
-    fetch(`https://the-office-api.herokuapp.com/season/${this.state.currentSeason}/format/quotes`)
-      .then(res => res.json())
+    // console.log('currentseason: ', this.state.currentSeason)
+    // console.log('loading?',  this.state.isLoading)
+    fetch(`https://the-office-api.herokuapp.com/season/${season}/format/quotes`)
+    .then(res => {
+      if (!res.ok) {
+        throw Error(this.state.isError)
+      }
+      return res.json()
+    })
       .then(data => {
         this.setInitialState(data.data);
+        // console.log('currentseasoninthen: ', this.state.currentSeason)
       })
       .catch(err => this.setState({ isError: err }))
   }

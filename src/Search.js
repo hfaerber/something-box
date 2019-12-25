@@ -57,7 +57,7 @@ class Search extends Component {
             <option value="8">8</option>
             <option value="9">9</option>
         </select>
-        <button className='season-button' onClick={this.handleGoButton}>Go!</button>
+        <button type='button' className='season-button' onClick={this.handleGoButton}>Go!</button>
         <div className='searchHeader'>
           <h1>{this.props.isSearchDisplay ? `That's What *${this.state.query}* Said` : 'That\'s What She Said'}</h1>
           <button className={buttonStatus} onClick={this.handleAllResults}>Back To All Results</button>
