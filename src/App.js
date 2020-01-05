@@ -419,10 +419,7 @@ export class App extends Component {
           setStateBySeason={this.setStateBySeason}
         /> }
         { !this.state.isLoading &&
-          <DisplayContainer
-            quotes={ this.state.searchMatches.length <= 0 ? this.state.quotes : this.state.searchMatches }
-            currentEpisode={this.state.currentEpisode}
-          /> }
+          <DisplayContainer /> }
       </main>
     );
   }
@@ -453,3 +450,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(App);
 //     quotes={this.state.searchMatches}
 //     currentEpisode={this.state.currentEpisode}
 //     /> }
+
+// quotes={ this.state.searchMatches.length <= 0 ? this.state.quotes : this.state.searchMatches }
+//
