@@ -1,9 +1,14 @@
 import { combineReducers } from 'redux';
-// import { todos } from './todos';
+import { quotesReducer } from '../reducers/quotesReducer';
+import { isLoadingReducer } from '../reducers/isLoadingReducer';
+import { isErrorReducer } from '../reducers/isErrorReducer';
+import { searchMatchesReducer } from '../reducers/searchMatchesReducer';
 
 export const rootReducer = combineReducers({
-  quotes:
-  isLoading:
-  isError:
-  searchMatches:
+  quotes: quotesReducer,
+  isLoading: isLoadingReducer,
+  isError: isErrorReducer,
+  searchMatches: searchMatchesReducer
 })
+
+export default rootReducer;
