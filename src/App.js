@@ -3,9 +3,11 @@ import './App.css';
 import Form from './Form';
 import DisplayContainer from './DisplayContainer'
 import Search from './Search';
+import { connect } from 'react-redux';
+import { addQuotes, updateLoading } from './actions';
 // import {michael} from "../public/michael.jpeg";
 
-class App extends Component {
+export class App extends Component {
   constructor() {
     super();
     this.state = {
@@ -336,6 +338,8 @@ class App extends Component {
         return res.json()
       })
       .then(data => {
+        // update Store w addQuotes(data.data)
+        // this.props.addQuotes(data.data)
         this.setInitialState(data.data);
       })
       .catch(err => this.setState( {isError: err} ))
@@ -348,7 +352,10 @@ class App extends Component {
       })
       return acc
     }, []);
-    this.setState( { quotes: potato, isLoading: false });
+    this.props.addQuotes(potato);
+    this.props.updateLoading(false);
+
+    // this.setState( { quotes: potato, isLoading: false });
   }
 
   setStateBySeason = (season) => {
@@ -421,7 +428,21 @@ class App extends Component {
   }
 }
 
-export default App;
+export const mapStateToProps = state => ({
+  quotes: state.quotes,
+  isLoading: state.isLoading,
+  isError: state.isError,
+  searchMatches: state.searchMatches
+})
+
+export const mapDispatchToProps = dispatch => ({
+  addQuotes: quotes => dispatch(addQuotes(quotes)),
+  updateLoading: status => dispatch(updateLoading(status))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+
 
 // { (!this.state.isLoading && this.state.searchMatches.length <= 0) ?
 //   <DisplayContainer
