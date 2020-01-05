@@ -17,3 +17,8 @@ export const updateSearchMatches = matches => ({
   type: 'UPDATE_SEARCH_MATCHES',
   searchMatches: matches
 })
+
+export const updateCurrentSeason = season => ({
+  type: 'UPDATE_CURRENT_SEASON',
+  currentSeason: season
+})
